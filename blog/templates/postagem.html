@@ -1,0 +1,26 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        <h1>Postagem</h1>
+        {% bootstrap_messages %}
+
+          <form action="{% url 'postagem' %}" method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">Postar</button>
+              <a href="{% url 'index' %}"><button type="button" class="btn btn-success">Listagem</button></a>
+                {% endbuttons %}
+          </form>
+    </div>
+{% bootstrap_javascript jquery='full' %}
+</body>
+</html>
